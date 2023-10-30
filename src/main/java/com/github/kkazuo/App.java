@@ -23,6 +23,7 @@ import java.io.InputStream;
 import java.time.Instant;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
@@ -39,8 +40,8 @@ public class App {
         } else if (args[0].equals("-d")) {
             dumpInput(System.in);
         } else {
-            for (var arg : args) {
-                try (final var input = new FileInputStream(arg)) {
+            for (final String arg : args) {
+                try (final InputStream input = new FileInputStream(arg)) {
                     dumpInput(input);
                 }
             }
@@ -59,7 +60,7 @@ public class App {
 
     static final void dumpInput(InputStream input) throws IOException {
         GtfsRt.FeedMessage.parseFrom(input).toString().lines().forEach(line -> {
-            final var m = numPattern.matcher(line);
+            final Matcher m = numPattern.matcher(line);
             if (m.find()) {
                 System.out.print(line);
                 System.out.print("  # ");
