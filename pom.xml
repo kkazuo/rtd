@@ -60,6 +60,28 @@
           </execution>
         </executions>
       </plugin>
+      <plugin>
+        <groupId>com.diffplug.spotless</groupId>
+        <artifactId>spotless-maven-plugin</artifactId>
+        <version>2.39.0</version>
+        <executions>
+          <execution>
+            <phase>clean</phase>
+            <goals>
+              <goal>apply</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <java>
+            <cleanthat />
+            <palantirJavaFormat>
+              <version>2.38.0</version>
+            </palantirJavaFormat>
+            <formatAnnotations />
+          </java>
+        </configuration>
+      </plugin>
     </plugins>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
