@@ -2,6 +2,18 @@
 
 Decode GTFS-realtime protobuf binary and print to stdout.
 
+# Usage
+
+```
+Decode GTFS-realtime Feed Message:
+
+    rtd [options] [files...]
+
+Options:
+    -d    Read from standard input.
+    -w    Diff each files. (at least 2 files required.)
+```
+
 # LICENSE
 
     Copyright 2023 Koga Kazuo (kkazuo@kkazuo.com)
